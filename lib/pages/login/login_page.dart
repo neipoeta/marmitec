@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:marmitec/controllers/login_controller.dart';
 import 'package:ndialog/ndialog.dart';
+import '../../utils/constantes.dart';
 import '../../widgets/drawer_padrao.dart';
 
 class LoginPage extends GetView<LoginController> {
@@ -46,7 +47,11 @@ class LoginPage extends GetView<LoginController> {
                   child: SizedBox(
                     height: double.infinity,
                     child: SingleChildScrollView(
-                      reverse: true,
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 40.0,
+                        vertical: 75.0,
+                      ),
                       child: Column(
                         children: [
                           Padding(
@@ -58,52 +63,84 @@ class LoginPage extends GetView<LoginController> {
                                 Container(
                                   margin: const EdgeInsets.only(left: 15),
                                   child: const Text(
-                                    'Login',
+                                    'Acesse sua conta',
                                     style: TextStyle(
-                                      fontSize: 20,
+                                      color: Colors.white,
+                                      fontFamily: 'OpenSans',
+                                      fontSize: 28.0,
                                       fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                                GestureDetector(
-                                  onTap: () => {
-                                    //NavigationManager.navegarPara(Rotas.cadastroPage)
-                                  },
-                                  child: Container(
-                                    margin: const EdgeInsets.only(left: 50),
-                                    child: const Text(
-                                      'Cadastro',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color:
-                                            Color.fromARGB(255, 118, 149, 198),
-                                      ),
                                     ),
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 20.0, vertical: 5),
-                            child: Divider(
-                              height: 1,
-                              color: Color.fromARGB(255, 118, 149, 198),
-                            ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                'Email',
+                                style: kLabelStyle,
+                              ),
+                              const SizedBox(height: 10.0),
+                              Container(
+                                margin: const EdgeInsets.only(bottom: 20),
+                                alignment: Alignment.centerLeft,
+                                decoration: kBoxDecorationStyle,
+                                height: 60.0,
+                                child: TextField(
+                                  keyboardType: TextInputType.emailAddress,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'OpenSans',
+                                  ),
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    contentPadding:
+                                        const EdgeInsets.only(top: 14.0),
+                                    prefixIcon: const Icon(
+                                      Icons.email,
+                                      color: Colors.white,
+                                    ),
+                                    hintText: 'Enter your Email',
+                                    hintStyle: kHintTextStyle,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            margin: const EdgeInsets.only(left: 15),
-                            child: const Padding(
-                              padding: EdgeInsets.only(top: 10),
-                              child: Text(
-                                  'Faça seu login e tenha acesso a Área do Cliente',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                  )),
-                            ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                'Password',
+                                style: kLabelStyle,
+                              ),
+                              const SizedBox(height: 10.0),
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                decoration: kBoxDecorationStyle,
+                                height: 60.0,
+                                child: TextField(
+                                  obscureText: true,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'OpenSans',
+                                  ),
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    contentPadding:
+                                        const EdgeInsets.only(top: 14.0),
+                                    prefixIcon: const Icon(
+                                      Icons.lock,
+                                      color: Colors.white,
+                                    ),
+                                    hintText: 'Enter your Password',
+                                    hintStyle: kHintTextStyle,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                           // Padding(
                           //   padding: const EdgeInsets.symmetric(
@@ -130,13 +167,12 @@ class LoginPage extends GetView<LoginController> {
                           Container(
                             alignment: Alignment.centerRight,
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 15.0, vertical: 8),
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 16.0),
                               child: GestureDetector(
-                                child: const Text(
+                                child: Text(
                                   'Esqueci minha senha',
-                                  style: TextStyle(
-                                      decoration: TextDecoration.underline),
+                                  style: kLabelStyle,
                                 ),
                                 onTap: () async {
                                   if (_loginController.text.length < 6) {
@@ -234,22 +270,53 @@ class LoginPage extends GetView<LoginController> {
                           //     botaoPreenchidoAltura: BotaoPreenchidoAltura.baixa,
                           //   ),
                           // ),
-                          Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: Row(
-                              children: [
-                                const Text('Primeiro Acesso?'),
-                                GestureDetector(
-                                  onTap: () => {
-                                    //NavigationManager.navegarPara(Rotas.cadastroPage),
-                                  },
-                                  child: const Text('Clique Aqui',
-                                      style: TextStyle(
-                                          color: Colors.blue,
-                                          decoration:
-                                              TextDecoration.underline)),
+                          Container(
+                            padding: const EdgeInsets.symmetric(vertical: 25.0),
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              onPressed: () => print('Login Button Pressed'),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.white,
+                                padding: const EdgeInsets.all(15.0),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30.0),
                                 ),
-                              ],
+                              ),
+                              child: const Text(
+                                'LOGIN',
+                                style: TextStyle(
+                                  color: Color(0xFF527DAA),
+                                  letterSpacing: 1.5,
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'OpenSans',
+                                ),
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () => print('Sign Up Button Pressed'),
+                            child: RichText(
+                              text: const TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: 'Primeiro Acesso? ',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: 'Cadastre-se ',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
