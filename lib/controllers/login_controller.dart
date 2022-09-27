@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marmitec/app_config.dart';
-import '../../rest/request_models/login_request.dart';
-import '../../rest/response_models/login_response.dart';
-import '../../rest/services/login_rest_service.dart';
-import '../../rest/services/recuperar_senha_rest_service.dart';
+import '../rest/response_models/login_response.dart';
 
 class LoginController extends GetxController with StateMixin {
-  LoginController(
-      this._loginRestService,
-      this._recuperarSenhaRestService,);
-  final LoginRestService _loginRestService;
-  final AppConfig _appConfig = Get.find<AppConfig>();
-  final RecuperarSenhaRestService _recuperarSenhaRestService;
+  //final LoginRestService _loginRestService;
+  //final AppConfig _appConfig = Get.find<AppConfig>();
+  //final RecuperarSenhaRestService _recuperarSenhaRestService;
   var _busyController = false;
 
   @override
@@ -34,40 +27,40 @@ class LoginController extends GetxController with StateMixin {
     }
   }
 
-  Future logar(documento, senha) async {
-    try {
-      final LoginRequest loginRequest = LoginRequest(
-          'key',
-          _appConfig.chaveProjeto,
-          documento.text,
-          senha.text,
-          false,
-          'mensagem',
-          false,
-          'facebook',
-          'authId',
-          'authToken');
+  // Future logar(documento, senha) async {
+  //   try {
+  //     final LoginRequest loginRequest = LoginRequest(
+  //         'key',
+  //         _appConfig.chaveProjeto,
+  //         documento.text,
+  //         senha.text,
+  //         false,
+  //         'mensagem',
+  //         false,
+  //         'facebook',
+  //         'authId',
+  //         'authToken');
 
-      if (!loginRequest.documento.contains('@')) {
-        loginRequest.documento =
-            loginRequest.documento.replaceAll(".", "").replaceAll("-", "");
-      }
+  //     if (!loginRequest.documento.contains('@')) {
+  //       loginRequest.documento =
+  //           loginRequest.documento.replaceAll(".", "").replaceAll("-", "");
+  //     }
 
-      final login = await _loginRestService.logar(loginRequest);
+  //     final login = await _loginRestService.logar(loginRequest);
 
-      await configuraUsuarioApp(login);
-    } catch (e) {
-      return e.toString();
-    }
-  }
+  //     await configuraUsuarioApp(login);
+  //   } catch (e) {
+  //     return e.toString();
+  //   }
+  // }
 
-  bool ehOuroEPrata() {
-    if (_appConfig.chaveProjeto == 'E0297E') {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  // bool ehOuroEPrata() {
+  //   if (_appConfig.chaveProjeto == 'E0297E') {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
 
   Future configuraUsuarioApp(LoginResponse login) async{

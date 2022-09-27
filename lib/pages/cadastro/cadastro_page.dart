@@ -8,14 +8,14 @@ import 'cadastro_controller.dart';
 class CadastroPage extends GetView<CadastroController> {
   CadastroPage({Key? key}) : super(key: key);
   final _formKey = GlobalKey<FormState>();
-  final AppConfig _appConfig = Get.find<AppConfig>();
+  //final AppConfig _appConfig = Get.find<AppConfig>();
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        title: Text(_appConfig.appName),
+        title: const Text('_appConfig.appName'),
       ),
       // endDrawer: CarrinhoDrawerPage(),
       drawer: DrawerPadrao(true),
@@ -154,24 +154,24 @@ class CadastroPage extends GetView<CadastroController> {
                                
                               
                                
-                                Visibility(
-                                  visible: true,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 15.0, vertical: 8),
-                                    child: DropdownPadrao(
-                                      '',
-                                      _appConfig.cidades
-                                          .map((e) => DropdownMenuItem(
-                                                value: e,
-                                                child: Text(e),
-                                              ))
-                                          .toList(),
-                                      (v) => controller.cidadeClienteController
-                                          .text = v.toString(),
-                                    ),
-                                  ),
-                                ),
+                                // Visibility(
+                                //   visible: true,
+                                //   child: Padding(
+                                //     padding: const EdgeInsets.symmetric(
+                                //         horizontal: 15.0, vertical: 8),
+                                //     child: DropdownPadrao(
+                                //       '',
+                                //       _appConfig.cidades
+                                //           .map((e) => DropdownMenuItem(
+                                //                 value: e,
+                                //                 child: Text(e),
+                                //               ))
+                                //           .toList(),
+                                //       (v) => controller.cidadeClienteController
+                                //           .text = v.toString(),
+                                //     ),
+                                //   ),
+                                // ),
                                 
                               ],
                             );

@@ -1,16 +1,14 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
-import 'package:marmitec/app_config.dart';
 import 'package:marmitec/rest/request_models/notificacao_request.dart';
 
 import '../../rest/response_models/notificacao_response.dart';
 import '../../rest/services/notificacoes_rest_service.dart';
 
 class NotificacoesController extends GetxController {
-  final AppConfig _appConfig = Get.find<AppConfig>();
+  //final AppConfig _appConfig = Get.find<AppConfig>();
   final NotificacaoRestService _notificacaoRestService;
   late String? mensagemNotificacao = "";
   late String? tituloNotificacao = "";
@@ -35,8 +33,8 @@ class NotificacoesController extends GetxController {
   NotificacaoRequest obterNotificacaoRequest() {
     try {
       notificacaoRequest = NotificacaoRequest(
-        chaveProjeto: _appConfig.chaveProjeto,
-        id: _appConfig.ultimoIdNotificacao,
+        chaveProjeto: '_appConfig.chaveProjeto',
+        id: 55,
         documento: '',
         uf: '',
         cidade: '',
@@ -135,7 +133,7 @@ class NotificacoesController extends GetxController {
 
   Future<bool> inicializarNotificacao() {
     try {
-      channelNotificacao = "${_appConfig.flavorName}_channel";
+      channelNotificacao = "{_appConfig.flavorName}_channel";
       AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
         if (!isAllowed) {
           AwesomeNotifications().requestPermissionToSendNotifications();

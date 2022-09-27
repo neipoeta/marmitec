@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import '../../app_config.dart';
 import '../../services/ciclo_app/ciclo_app_controller.dart';
 import '../../widgets/drawer_padrao.dart';
 import '../../widgets/titulo_padrao.dart';
@@ -9,7 +8,7 @@ import 'cliente_controller.dart';
 class ClientePage extends GetView<ClienteController> {
   String urlHorarios = '';
 
-  final AppConfig _appConfig = Get.find<AppConfig>();
+  //final AppConfig _appConfig = Get.find<AppConfig>();
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +18,7 @@ class ClientePage extends GetView<ClienteController> {
         backgroundColor: const Color.fromARGB(255, 227, 241, 255),
         key: skaffoldKey,
         appBar: AppBar(
-          title: Text(_appConfig.appName),
+          title: const Text('_appConfig.appName'),
         ),
         // endDrawer: CarrinhoDrawerPage(),
         drawer: DrawerPadrao(false),

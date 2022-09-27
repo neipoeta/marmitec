@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ndialog/ndialog.dart';
 
-import '../app_config.dart';
 
 class DrawerPadrao extends StatelessWidget {
   bool telaHome;
 
   DrawerPadrao(this.telaHome, {Key? key}) : super(key: key);
-  final AppConfig _appConfig = Get.find<AppConfig>();
+  //final AppConfig _appConfig = Get.find<AppConfig>();
   final double padding = 8.0;
   String urlSiteVIOP =
       'https://homologacao.passagensweb.com.br/_esipe_geral/PoliticaDePrivacidade/E0297.pdf';
@@ -54,9 +53,7 @@ class DrawerPadrao extends StatelessWidget {
                                 ),
                               ),
                               Visibility(
-                                  visible: _appConfig.chaveProjeto != 'E0297E'
-                                      ? false
-                                      : true,
+                                  visible: true,
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
@@ -146,7 +143,7 @@ class DrawerPadrao extends StatelessWidget {
                     splashColor: Get.theme.primaryColor.withOpacity(0.4),
                     onTap: () {
                       //NavigationManager.voltar();
-                      sairApp();
+                      //sairApp();
                     },
                     child: const SizedBox(
                       height: 50,
@@ -170,11 +167,11 @@ class DrawerPadrao extends StatelessWidget {
     );
   }
 
-  sairApp() {
-    _appConfig.tempoCompras = '';
-    //NavigationManager.voltar();
-    //NavigationManager.navegarPara(Rotas.loginPage);
-  }
+  // sairApp() {
+  //   _appConfig.tempoCompras = '';
+  //   //NavigationManager.voltar();
+  //   //NavigationManager.navegarPara(Rotas.loginPage);
+  // }
 
   Widget DivisorDrawer() {
     return Container(

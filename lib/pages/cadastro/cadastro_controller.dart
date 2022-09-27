@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marmitec/app_config.dart';
 import '../../rest/request_models/cadastro_request.dart';
 import '../../rest/services/cadastro_rest_service.dart';
 import '../../rest/services/cep_rest_service.dart';
@@ -9,7 +8,7 @@ import '../../rest/services/cep_rest_service.dart';
 class CadastroController extends GetxController with StateMixin {
   CadastroController(this._cadastroRestService, this._buscaCepRestService);
 
-  final AppConfig _appConfig = Get.find<AppConfig>();
+  //final AppConfig _appConfig = Get.find<AppConfig>();
   
   RxBool disabledCamposEstadoCidade = RxBool(true);
   bool isEmpresa = false;
@@ -58,7 +57,7 @@ class CadastroController extends GetxController with StateMixin {
       cep) async {
     try {
       final CadastroRequest cadastroRequest = CadastroRequest(
-          _appConfig.chaveProjeto,
+          '_appConfig.chaveProjeto',
           isEmpresa,
           nomeContato,
           nome,
@@ -107,7 +106,7 @@ class CadastroController extends GetxController with StateMixin {
   buscarCidade(estadoSigla) async {
     var respostaBuscaPorUf =
         await _buscaCepRestService.buscarCidadePorUF(estadoSigla);
-    _appConfig.cidades.value = respostaBuscaPorUf;
+    //_appConfig.cidades.value = respostaBuscaPorUf;
     return respostaBuscaPorUf;
   }
   

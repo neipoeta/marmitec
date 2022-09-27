@@ -9,7 +9,7 @@ import 'empresa_controller.dart';
 class EmpresaPage extends GetView<EmpresaController> {
   String urlHorarios = '';
 
-  final AppConfig _appConfig = Get.find<AppConfig>();
+  //final AppConfig _appConfig = Get.find<AppConfig>();
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class EmpresaPage extends GetView<EmpresaController> {
         backgroundColor: const Color.fromARGB(255, 227, 241, 255),
         key: skaffoldKey,
         appBar: AppBar(
-          title: Text(_appConfig.appName),
+          title: const Text('_appConfig.appName'),
         ),
         // endDrawer: CarrinhoDrawerPage(),
         drawer: DrawerPadrao(false),

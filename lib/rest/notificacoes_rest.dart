@@ -1,12 +1,9 @@
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
-import 'package:marmitec/app_config.dart';
 import 'package:marmitec/rest/response_models/notificacao_response.dart';
 
 import 'http_client.dart';
 
 class NotificacaoRest extends HttpClient {
-  final AppConfig _appConfig = Get.find<AppConfig>();
+  //final AppConfig _appConfig = Get.find<AppConfig>();
   List<NotificacaoResponse> notificacao = [];
 
   Future obterNotificacaoApi(notificacaoRequest) async {

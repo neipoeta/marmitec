@@ -2,12 +2,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../app_config.dart';
 
 class ClienteController extends GetxController with StateMixin {
   ClienteController();
 
-  final AppConfig _appConfig = Get.find<AppConfig>();
+  //final AppConfig _appConfig = Get.find<AppConfig>();
 
   String get dataIdaUrl => dataIdaController.value.text;
   String get dataVoltaUrl => dataVoltaController.value.text;

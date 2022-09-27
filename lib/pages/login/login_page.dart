@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:marmitec/pages/login/login_controller.dart';
+import 'package:marmitec/controllers/login_controller.dart';
 import 'package:ndialog/ndialog.dart';
 import '../../app_config.dart';
 import '../../widgets/drawer_padrao.dart';
@@ -11,7 +11,7 @@ class LoginPage extends GetView<LoginController> {
   final TextEditingController _loginController = TextEditingController();
   final TextEditingController _senhaController = TextEditingController();
 
-  final AppConfig _appConfig = Get.find<AppConfig>();
+  //final AppConfig _appConfig = Get.find<AppConfig>();
   late ProgressDialog progressDialog;
 
   @override
@@ -21,7 +21,7 @@ class LoginPage extends GetView<LoginController> {
       child: Scaffold(
         key: skaffoldKey,
         appBar: AppBar(
-          title: Text(_appConfig.appName),
+          title: const Text('_appConfig.appName'),
         ),
         drawer: DrawerPadrao(true),
         backgroundColor: const Color.fromARGB(255, 227, 241, 255),
@@ -251,29 +251,29 @@ class LoginPage extends GetView<LoginController> {
     );
   }
 
-  Future _login(BuildContext context) async {
-    progressDialog = ProgressDialog(
-      context,
-      blur: 0,
-      dialogTransitionType: DialogTransitionType.Shrink,
-      message: const Text("Carregando..."),
-      title: null,
-    );
-    progressDialog.show();
-    await Future.delayed(const Duration(seconds: 2));
-    await controller.logar(_loginController, _senhaController);
-    progressDialog.dismiss();
-    if (_appConfig == null) {
-      //controller.usuarioInvalido(context);
-    } else {
-      var snackBar = const SnackBar(
-        elevation: 0,
-        behavior: SnackBarBehavior.floating,
-        backgroundColor: Color.fromARGB(255, 118, 149, 198),
-        content: Text('Login realizado com sucesso.\nBem vindo, Nei!'),
-      );
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-      //controller.validaUsuarioLogado();
-    }
-  }
+  // Future _login(BuildContext context) async {
+  //   progressDialog = ProgressDialog(
+  //     context,
+  //     blur: 0,
+  //     dialogTransitionType: DialogTransitionType.Shrink,
+  //     message: const Text("Carregando..."),
+  //     title: null,
+  //   );
+  //   progressDialog.show();
+  //   await Future.delayed(const Duration(seconds: 2));
+  //   await controller.logar(_loginController, _senhaController);
+  //   progressDialog.dismiss();
+  //   if (_appConfig == null) {
+  //     //controller.usuarioInvalido(context);
+  //   } else {
+  //     var snackBar = const SnackBar(
+  //       elevation: 0,
+  //       behavior: SnackBarBehavior.floating,
+  //       backgroundColor: Color.fromARGB(255, 118, 149, 198),
+  //       content: Text('Login realizado com sucesso.\nBem vindo, Nei!'),
+  //     );
+  //     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  //     //controller.validaUsuarioLogado();
+  //   }
+  // }
 }

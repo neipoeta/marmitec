@@ -1,10 +1,8 @@
-import 'package:get/get.dart';
 
-import '../app_config.dart';
 import 'http_cep.dart';
 
 class BuscaCepRest extends HttpCep{
-  final AppConfig _appConfig = Get.find<AppConfig>();
+  //final AppConfig _appConfig = Get.find<AppConfig>();
   
   Future buscarEstadoCidade(String cep) async {
     final response = await get('https://viacep.com.br/ws/$cep/json/');
