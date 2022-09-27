@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marmitec/routes/route_name.dart';
 
 import 'routes/app_page.dart';
 
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      initialRoute: RouteName.login,
       title: 'Flutter Stateful Clicker Counter',
       theme: ThemeData(
         primarySwatch: Colors.blue,
